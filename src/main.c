@@ -52,20 +52,20 @@ int main(int argc, char const *argv[]) {
         array[i] = obj_constructor(tmp);
     }
 
-    // // Sort n objects.
-    // quick_sort(array, n);
+    // Sort n objects.
+    quick_sort(array, n);
 
-    // // Print n objects to output using dump.
-    // for (int i = 0; i < n; i++) {
-    //     /* Your code here to print the sorted objects */
-    //     (*(array[i]))->dump(array[i], output);
-    // }
+    // Print n objects to output using dump.
+    for (int i = 0; i < n; i++) {
+        /* Your code here to print the sorted objects */
+        (*(array[i]))->dump(array[i], output);
+    }
 
-    // /* Your code here to de-allocate the memories we have allocated. */
-    // for (int i = 0; i < n; i++)
-    // {
-    //     (*(array[i]))->drop(array[i]);
-    // }
+    /* Your code here to de-allocate the memories we have allocated. */
+    for (int i = 0; i < n; i++)
+    {
+        (*(array[i]))->drop(array[i]);
+    }
 
     // Close the files we opened.
     if (outputGiven)
