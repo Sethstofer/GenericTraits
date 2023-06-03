@@ -14,12 +14,6 @@ void *new_Int(char *string)
         exit(0);
     }
 
-    // GenericTraits *traits_Int = new_Integer->impl;
-    // traits_Int->new = new_Int;
-    // traits_Int->dump = dump_Int;
-    // traits_Int->cmp = cmp_Int;
-    // traits_Int->drop = drop_Int;
-
     new_Integer->impl = (GenericTraits*)malloc(sizeof(GenericTraits));
     new_Integer->impl->new = new_Int;
     new_Integer->impl->dump = dump_Int;
@@ -33,7 +27,6 @@ void *new_Int(char *string)
 
 void dump_Int(void *self, FILE *fp)
 {
-    //fprintf(fp, "0x%02x", ((Int*)self)->i);
     fprintf(fp, "0x%x\n", ((Int*)self)->i);
 }
 
