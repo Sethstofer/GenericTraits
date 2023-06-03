@@ -15,6 +15,12 @@ void *new_Int(char *string)
     }
 
     new_Integer->impl = (GenericTraits*)malloc(sizeof(GenericTraits));
+    if (!new_Integer->impl)
+    {
+        fprintf(stderr, "Error: memory allocation failed.\n");
+        exit(0);
+    }
+
     new_Integer->impl->new = new_Int;
     new_Integer->impl->dump = dump_Int;
     new_Integer->impl->cmp = cmp_Int;
