@@ -53,13 +53,25 @@ void dump_Student(void *self, FILE *fp)
 
 int cmp_Student(void *self, void *other)
 {
-    return cmp_Human(((Student*)self)->human, ((Student*)other)->human);
+    if (((Student*)self)->grade < ((Student*)other)->grade)
+    {
+        return -1;
+    }
+    else if (((Student*)self)->grade > ((Student*)other)->grade)
+    {
+        return 1;
+    }
+    else
+    {
+        return cmp_Human(((Student*)self)->human, ((Student*)other)->human);
+    }
 }
 
 void drop_Student(void *self)
 {
     if (self)
     {
+        free(((Student*)self)->impl);
         drop_Human(((Student*)self)->human);
         free(self);
     }

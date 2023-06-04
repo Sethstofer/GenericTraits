@@ -8,7 +8,7 @@
 
 DECLARE_STRUCT(Rectangle,
 {   GenericTraits *impl;
-    int height;
-    int width; })
+    size_t height;
+    size_t width; })
 
 #endif

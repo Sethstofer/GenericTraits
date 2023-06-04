@@ -36,9 +36,16 @@ void *new_Human(char *string)
 
     // remove extra input & newline character
     int strLen = strlen(string);
+    // max characters in name is 255
+    if (strLen > 255)
+    {
+        string[255] = 0;
+        strLen = 255;
+    }
+
     for (int i = 0; i < strLen; i++)
     {
-        if ((string[i] == 32) || (i == strLen - 1))
+        if ((string[i] == 32) || (string[i] == '\n'))
         {
             string[i] = 0;
         }

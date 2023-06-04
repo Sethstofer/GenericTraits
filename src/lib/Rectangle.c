@@ -35,7 +35,7 @@ void *new_Rectangle(char *string)
         exit(0);
     }
 
-    new_Rect->height = atoi(token);
+    new_Rect->height = strtoull(token, NULL, 10);
 
     token = strtok_r(NULL, " ", &context);
     if (!token)
@@ -44,20 +44,20 @@ void *new_Rectangle(char *string)
         exit(0);
     }
 
-    new_Rect->width = atoi(token);
+    new_Rect->width = strtoull(token, NULL, 10);
 
     return new_Rect;
 }
 
 void dump_Rectangle(void *self, FILE *fp)
 {
-    fprintf(fp, "%d %d\n", ((Rectangle*)self)->height, ((Rectangle*)self)->width);
+    fprintf(fp, "%zu %zu\n", ((Rectangle*)self)->height, ((Rectangle*)self)->width);
 }
 
 int cmp_Rectangle(void *self, void *other)
 {
-    int areaSelf = ((Rectangle*)self)->height * ((Rectangle*)self)->width;
-    int areaOther = ((Rectangle*)other)->height * ((Rectangle*)other)->width;
+    size_t areaSelf = ((Rectangle*)self)->height * ((Rectangle*)self)->width;
+    size_t areaOther = ((Rectangle*)other)->height * ((Rectangle*)other)->width;
 
     // self is less than other
     if (areaSelf < areaOther)
