@@ -6,9 +6,13 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-// typedef struct Student {
-//   /* Your code here to declare the struct */
-// } Student;
+typedef struct Student {
+    /* Your code here to declare the struct */
+    GenericTraits *impl;
+
+    Human *human;
+    int grade;
+} Student;
 
 void *new_Student(char *);
 void dump_Student(void *self, FILE *fp);

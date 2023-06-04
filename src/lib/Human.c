@@ -34,12 +34,13 @@ void *new_Human(char *string)
     human->impl->cmp = cmp_Human;
     human->impl->drop = drop_Human;
 
-    for (int i = 0; i < (int)strlen(string); i++)
+    // remove extra input & newline character
+    int strLen = strlen(string);
+    for (int i = 0; i < strLen; i++)
     {
-        if (string[i] == 32)
+        if ((string[i] == 32) || (i == strLen - 1))
         {
-            string[i] = '\n';
-            string[i+1] = 0;
+            string[i] = 0;
         }
     }
 
@@ -50,7 +51,7 @@ void *new_Human(char *string)
 
 void dump_Human(void *self, FILE *fp)
 {
-    fprintf(fp, "%s", ((Human*)self)->name);
+    fprintf(fp, "%s\n", ((Human*)self)->name);
 }
 
 int cmp_Human(void *self, void *other)
