@@ -46,11 +46,15 @@ void add_ctor_dtor(char *type_name, Constructor ctor, Destructor dtor);
   void __attribute__((constructor)) register_##Object();
 
 #define DEFINE_STRUCT(Object)                                                  \
-  void drop_##Object(void *this) { /* Your code here to free the instance. */  \
+  void drop_##Object(void *this) {                                             \
+    /* Your code here to free the instance. */                                 \
+    if (this)                                                                  \
+    { free(((Object*)this)->impl);                                             \
+      free(this); }                                                            \
   }                                                                            \
   void __attribute__((constructor)) register_##Object() {                      \
     /* Your code here to register an object. */                                \
-    add_ctor_dtor(Object, new_##Object, drop_##Object);                        \
+    add_ctor_dtor(#Object, new_##Object, drop_##Object);                        \
   }
 
 #endif

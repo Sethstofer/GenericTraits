@@ -5,8 +5,6 @@
 
 /* Your code here to define the struct */
 
-#include "stdlib.h"
-
 void *new_Student(char *string)
 {
     Student *student = (Student*)malloc(sizeof(Student));
